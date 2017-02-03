@@ -1,0 +1,17 @@
+.slider-360 {
+  position: relative;
+  img {
+    cursor: move;
+    position: absolute;
+
+    opacity: 0;
+
+    transition: opacity 50ms;
+
+    &.active {
+
+      transition: none;
+      opacity: 1;
+    }
+  }
+}
