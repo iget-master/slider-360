@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+* Slider container now have the height of the contained image
+
 ## 1.0.1
 
 * Fixed incompatibility with other libraries that uses `$` 

@@ -25,6 +25,11 @@ class Slider {
         this.container.on('mousedown touchstart', jQuery.proxy(this.dragStartEventHandler, this));
         jQuery(window).on('mouseup touchend', jQuery.proxy(this.dragEndEventHandler, this));
         jQuery(window).on('mousemove touchmove', jQuery.proxy(this.dragMoveEventHandler, this))
+
+        this.images.one('load', (event) => {
+            let image = jQuery(event.target);
+            this.container.css('height', image.height());
+        });
     }
 
     /**
