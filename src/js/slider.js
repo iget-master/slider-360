@@ -8,7 +8,7 @@ class Slider {
      */
     constructor (container, options) {
         this.container = container;
-        this.options = $.extend(defaultOptions, options);
+        this.options = jQuery.extend(defaultOptions, options);
 
         this.init();
     }
@@ -22,9 +22,9 @@ class Slider {
         this.currentImage = 0;
         this.dragging = false;
 
-        this.container.on('mousedown touchstart', $.proxy(this.dragStartEventHandler, this));
-        $(window).on('mouseup touchend', $.proxy(this.dragEndEventHandler, this));
-        $(window).on('mousemove touchmove', $.proxy(this.dragMoveEventHandler, this))
+        this.container.on('mousedown touchstart', jQuery.proxy(this.dragStartEventHandler, this));
+        jQuery(window).on('mouseup touchend', jQuery.proxy(this.dragEndEventHandler, this));
+        jQuery(window).on('mousemove touchmove', jQuery.proxy(this.dragMoveEventHandler, this))
     }
 
     /**
