@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3
+
+* Fix bug where the container does not resize when the image is cached.
+
 ## 1.0.2
 
 * Slider container now have the height of the contained image

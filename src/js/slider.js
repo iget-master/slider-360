@@ -29,6 +29,13 @@ class Slider {
         this.images.one('load', (event) => {
             let image = jQuery(event.target);
             this.container.css('height', image.height());
+            this.container.css('width', image.width());
+        }).each((index, element) => {
+            if (element.complete) {
+                let image = jQuery(element);
+                this.container.css('height', image.height());
+                this.container.css('width', image.width());
+            }
         });
     }
 
@@ -46,6 +53,8 @@ class Slider {
             } else {
                 return;
             }
+        } else {
+            event.preventDefault();
         }
 
         this.dragging = true;
@@ -54,7 +63,7 @@ class Slider {
             X,
         };
 
-        event.preventDefault();
+
     }
 
     /**
