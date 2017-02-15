@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+
+* Fix bug where the container does not resize when the window is resized.
+
 ## 1.0.3
 
 * Fix bug where the container does not resize when the image is cached.
