@@ -20,23 +20,55 @@ class Slider {
         this.images = this.container.find('img');
         this.images.first().addClass('active');
         this.currentImage = 0;
+        this.loadedImages = 0;
+        this.loaded = false;
         this.dragging = false;
 
         this.container.on('mousedown touchstart', jQuery.proxy(this.dragStartEventHandler, this));
         jQuery(window).on('mouseup touchend', jQuery.proxy(this.dragEndEventHandler, this));
         jQuery(window).on('mousemove touchmove', jQuery.proxy(this.dragMoveEventHandler, this))
+        jQuery(window).on('resize', jQuery.proxy(this.windowResizeEventHandler, this))
 
         this.images.one('load', (event) => {
             let image = jQuery(event.target);
-            this.container.css('height', image.height());
-            this.container.css('width', image.width());
+
+            this.container.css({
+                'height': image.height(),
+                'width': image.width(),
+            });
+
+            this.loaded = (++this.loadedImages === this.images.length);
         }).each((index, element) => {
             if (element.complete) {
                 let image = jQuery(element);
-                this.container.css('height', image.height());
-                this.container.css('width', image.width());
+
+                this.container.css({
+                    'height': image.height(),
+                    'width': image.width(),
+                });
+
+                this.loaded = (++this.loadedImages === this.images.length);
             }
         });
+    }
+
+    /**
+     * Handle window resize event
+     * @param {Event} event
+     */
+    windowResizeEventHandler (event) {
+        if (this.loaded) {
+            this.container.css({
+                'height': '',
+                'width': ''
+            });
+            let image = this.images.first();
+
+            this.container.css({
+                'height': image.height(),
+                'width': image.width(),
+            });
+        }
     }
 
     /**
